@@ -7,9 +7,20 @@ Class {
 	#category : #CloudOps
 }
 
+{ #category : #tests }
+TestConnections >> invalidToken [
+	^ CoToken invalid
+]
+
 { #category : #running }
 TestConnections >> setUp [ 
 	context := self
+]
+
+{ #category : #tests }
+TestConnections >> testConnectionWithInvalidToken [
+	self deny: (CoConnection new token: (context invalidToken)) isConnected. 
+
 ]
 
 { #category : #tests }
@@ -26,5 +37,5 @@ TestConnections >> testNotConnected [
 
 { #category : #tests }
 TestConnections >> validToken [
-	^ #foo
+	^ CoToken valid
 ]
