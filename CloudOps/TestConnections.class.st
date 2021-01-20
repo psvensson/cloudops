@@ -7,6 +7,11 @@ Class {
 	#category : #CloudOps
 }
 
+{ #category : #tests }
+TestConnections >> invalidToken [
+	^ CoToken invalid
+]
+
 { #category : #running }
 TestConnections >> mockComputeDetailData [
 	"secureJSONCallTo: https://gcr.io/v2/foobar-6e993/alpinetest/tags/list
@@ -56,6 +61,12 @@ TestConnections >> setUp [
 ]
 
 { #category : #tests }
+TestConnections >> testConnectionWithInvalidToken [
+	self deny: (CoConnection new token: (context invalidToken)) isConnected. 
+
+]
+
+{ #category : #tests }
 TestConnections >> testConnectionWithToken [
 	self assert: (CoConnection new token: (context validToken)) isConnected. 
 
@@ -69,5 +80,5 @@ TestConnections >> testNotConnected [
 
 { #category : #tests }
 TestConnections >> validToken [
-	^ #foo
+	^ CoToken valid
 ]

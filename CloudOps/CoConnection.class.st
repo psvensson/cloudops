@@ -9,7 +9,8 @@ Class {
 
 { #category : #connectivity }
 CoConnection >> isConnected [
-	 ^ token isNotNil
+	token ifNil: [ ^false ].
+	^token isValid
 ]
 
 { #category : #accessing }
