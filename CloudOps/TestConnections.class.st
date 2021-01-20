@@ -79,6 +79,17 @@ TestConnections >> testNotConnected [
 ]
 
 { #category : #tests }
+TestConnections >> testProjectNeedsValidConnection [
+	| project |
+	project := CoProject new.
+	self assert: project token isNil.
+	project connection: CoConnection withValidToken.
+	self assert: project token isValid.
+	self assert: project canConnect
+	
+]
+
+{ #category : #tests }
 TestConnections >> validToken [
 	^ CoToken valid
 ]

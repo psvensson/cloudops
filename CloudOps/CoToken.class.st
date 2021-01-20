@@ -4,12 +4,12 @@ Class {
 	#category : #CloudOps
 }
 
-{ #category : #'instance creation' }
+{ #category : #'mocking instance creation' }
 CoToken class >> invalid [
 	^CoInvalidToken new
 ]
 
-{ #category : #'instance creation' }
+{ #category : #'mocking instance creation' }
 CoToken class >> valid [
 	^CoValidToken new
 ]
