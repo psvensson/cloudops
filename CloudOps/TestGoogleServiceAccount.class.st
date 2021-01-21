@@ -32,6 +32,13 @@ TestGoogleServiceAccount >> fakeWrongKeyData [
 ]
 
 { #category : #tests }
+TestGoogleServiceAccount >> testFakeGoogleContextCreatesMockingToken [
+	|serviceAccount|
+	serviceAccount := CoServiceAccount new context: CoGoogleContext new.
+	self assert: serviceAccount connectionToken class equals: CoInvalidToken
+]
+
+{ #category : #tests }
 TestGoogleServiceAccount >> testKeyStructure [
 	|results key|
 	results := (STONJSON fromString: self fakeKeyData).
@@ -42,6 +49,13 @@ TestGoogleServiceAccount >> testKeyStructure [
 	self assert: (key trimRight endsWith: '-----END PRIVATE KEY-----').
 	self deny: (STONJSON fromString: self fakeWrongKeyData) size equals: 10.
 	
+]
+
+{ #category : #tests }
+TestGoogleServiceAccount >> testMockingContextCreatesMockingToken [
+	|serviceAccount|
+	serviceAccount := CoServiceAccount new context: CoContext new.
+	self assert: serviceAccount connectionToken class equals: CoInvalidToken
 ]
 
 { #category : #tests }

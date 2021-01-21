@@ -2,7 +2,8 @@ Class {
 	#name : #CoServiceAccount,
 	#superclass : #Object,
 	#instVars : [
-		'data'
+		'data',
+		'context'
 	],
 	#category : #CloudOps
 }
@@ -16,13 +17,24 @@ CoServiceAccount class >> fromGoogle: aString [
 
 { #category : #accessing }
 CoServiceAccount >> connectionToken [
-	^self isValid ifTrue: [CoToken valid]
-		ifFalse: [ CoToken invalid]
+	^context tokenFor: self
+]
+
+{ #category : #accessing }
+CoServiceAccount >> context: aCoContext [ 
+	context := aCoContext
 ]
 
 { #category : #accessing }
 CoServiceAccount >> data: aDictionary [
 	data := aDictionary
+	
+]
+
+{ #category : #initialization }
+CoServiceAccount >> initialize [ 	
+	data := Dictionary new.
+	context := CoContext new
 	
 ]
 
