@@ -16,6 +16,15 @@ CoServiceAccount class >> fromGoogle: aString [
 		yourself
 ]
 
+{ #category : #'mocking instance' }
+CoServiceAccount class >> validOne [
+	|anInstance|
+	anInstance := self new .
+	anInstance data at: #private_key put: 1.
+	^anInstance
+
+]
+
 { #category : #accessing }
 CoServiceAccount >> connectionToken [
 	^context tokenFor: self
@@ -29,6 +38,11 @@ CoServiceAccount >> context [
 { #category : #accessing }
 CoServiceAccount >> context: aCoContext [ 
 	context := aCoContext
+]
+
+{ #category : #accessing }
+CoServiceAccount >> data [
+	^ data
 ]
 
 { #category : #accessing }

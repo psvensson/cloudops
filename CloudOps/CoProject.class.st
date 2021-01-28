@@ -6,7 +6,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'connection',
-		'imageDefinitions'
+		'imageDefinitions',
+		'serviceAccount'
 	],
 	#category : #CloudOps
 }
@@ -37,6 +38,16 @@ CoProject >> defineImage: aString [
 { #category : #accessing }
 CoProject >> imageDefinitions [
 	^imageDefinitions ifNil: [ imageDefinitions := OrderedCollection new ]
+]
+
+{ #category : #testing }
+CoProject >> isValid [
+	^(serviceAccount notNil) and: [  serviceAccount isValid ]
+]
+
+{ #category : #accessing }
+CoProject >> serviceAccount: aCoServiceAccount [ 
+	serviceAccount := aCoServiceAccount
 ]
 
 { #category : #accessing }
