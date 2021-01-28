@@ -54,7 +54,7 @@ TestGoogleServiceAccount >> testKeyStructure [
 { #category : #tests }
 TestGoogleServiceAccount >> testMockingContextCreatesMockingToken [
 	|serviceAccount|
-	serviceAccount := CoServiceAccount new context: CoContext new.
+	serviceAccount := CoServiceAccount new.
 	self assert: serviceAccount connectionToken class equals: CoInvalidToken
 ]
 
@@ -65,4 +65,11 @@ TestGoogleServiceAccount >> testServiceAccountCanCreateConnectionToken [
 	self assert: serviceAccount connectionToken isValid.
 	serviceAccount := CoServiceAccount fromGoogle: self fakeWrongKeyData.
 	self deny: serviceAccount connectionToken isValid.
+]
+
+{ #category : #tests }
+TestGoogleServiceAccount >> testServiceAccountWithGoogleDataHasGoogleContext [
+	|serviceAccount|
+	serviceAccount := CoServiceAccount fromGoogle: self fakeKeyData.
+	self assert: serviceAccount context isGoogle 
 ]

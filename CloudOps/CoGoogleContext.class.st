@@ -3,3 +3,8 @@ Class {
 	#superclass : #CoContext,
 	#category : #CloudOps
 }
+
+{ #category : #testing }
+CoGoogleContext >> isGoogle [
+	^true
+]

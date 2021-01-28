@@ -12,12 +12,18 @@ Class {
 CoServiceAccount class >> fromGoogle: aString [ 
 	^self new 
 		data: (STONJSON fromString: aString);
+		context: CoGoogleContext new;
 		yourself
 ]
 
 { #category : #accessing }
 CoServiceAccount >> connectionToken [
 	^context tokenFor: self
+]
+
+{ #category : #accessing }
+CoServiceAccount >> context [
+	^ context
 ]
 
 { #category : #accessing }
