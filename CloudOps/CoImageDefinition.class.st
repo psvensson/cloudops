@@ -11,12 +11,17 @@ Class {
 
 { #category : #testing }
 CoImageDefinition >> isValid [
-	^metacelloDefinition notNil
+	^(metacelloDefinition notNil) & (name notNil)
 ]
 
 { #category : #accessing }
 CoImageDefinition >> metacelloDefinition: aString [ 
 	metacelloDefinition := aString
+]
+
+{ #category : #accessing }
+CoImageDefinition >> name [
+	^ name
 ]
 
 { #category : #accessing }

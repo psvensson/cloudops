@@ -14,9 +14,11 @@ TestProject >> setUp [
 
 { #category : #tests }
 TestProject >> testProjectDefinesImage [
-	|image| 
-	image := project defineImage: 'New Image definition'.
+	|imageDefinition imageName| 
+	imageName := 'New Image definition'.
+	imageDefinition := project defineImage:imageName .
 	self assert: project imageDefinitions size equals: 1.
+	self assert: (project imageDefinitionNamed: imageName) equals: imageDefinition
 	
 ]
 

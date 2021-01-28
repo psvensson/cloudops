@@ -18,11 +18,13 @@ TestImageDefinition >> testImageDefinitionHasPharoVersion [
 ]
 
 { #category : #tests }
-TestImageDefinition >> testImageDefinitionNeedsMetacelloScript [
+TestImageDefinition >> testImageDefinitionNeedsMetacelloScriptAndName [
 	| imageDefinition |
 	imageDefinition := CoImageDefinition new.
 	self deny: imageDefinition isValid.
 	imageDefinition metacelloDefinition: 'no real test'.
+	self deny: imageDefinition isValid.
+	imageDefinition name: 'Test ImageDefinition'.
 	self assert: imageDefinition isValid.
 	
 ]
