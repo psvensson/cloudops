@@ -13,6 +13,18 @@ TestProject >> setUp [
 ]
 
 { #category : #tests }
+TestProject >> testConnectedProjectCanBuildAnImageFromADefinition [
+	|definition|
+	project serviceAccount: CoServiceAccount validOne.
+	project connect.
+	definition := project createImageDefinition: 'One'.
+	definition startBuildingIn: project.
+	self assert: project currentBuilds size = 1
+	
+	
+]
+
+{ #category : #tests }
 TestProject >> testProjectDefinesImage [
 	|imageDefinition imageName| 
 	imageName := 'New Image definition'.

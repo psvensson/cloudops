@@ -1,3 +1,6 @@
+"
+I represent a DockerFile
+"
 Class {
 	#name : #CoImageDefinition,
 	#superclass : #Object,
@@ -37,4 +40,9 @@ CoImageDefinition >> pharoVersion [
 { #category : #accessing }
 CoImageDefinition >> pharoVersion: aString [ 
 	pharoVersion := aString
+]
+
+{ #category : #building }
+CoImageDefinition >> startBuildingIn: aProject [ 
+	aProject builds add: self
 ]

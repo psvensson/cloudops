@@ -7,10 +7,16 @@ Class {
 	#instVars : [
 		'connection',
 		'imageDefinitions',
-		'serviceAccount'
+		'serviceAccount',
+		'builds'
 	],
 	#category : #CloudOps
 }
+
+{ #category : #accessing }
+CoProject >> builds [
+	^builds ifNil: [ builds := OrderedCollection new ]
+]
 
 { #category : #testing }
 CoProject >> canConnect [
@@ -38,6 +44,11 @@ CoProject >> createImageDefinition: aString [
 	imageDefinition := CoImageDefinition new.
 	imageDefinition name: aString.
 	^self imageDefinitions add: imageDefinition.
+]
+
+{ #category : #'as yet unclassified' }
+CoProject >> currentBuilds [
+	^builds
 ]
 
 { #category : #accessing }
