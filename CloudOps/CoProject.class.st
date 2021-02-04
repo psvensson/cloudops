@@ -17,6 +17,11 @@ CoProject >> canConnect [
 	^self connection canConnect
 ]
 
+{ #category : #actions }
+CoProject >> connect [
+	connection token: serviceAccount connectionToken
+]
+
 { #category : #accessing }
 CoProject >> connection [
 	^ connection
@@ -28,7 +33,7 @@ CoProject >> connection: aCoConnection [
 ]
 
 { #category : #creation }
-CoProject >> defineImage: aString [ 
+CoProject >> createImageDefinition: aString [ 
 	| imageDefinition |
 	imageDefinition := CoImageDefinition new.
 	imageDefinition name: aString.
@@ -47,7 +52,8 @@ CoProject >> isValid [
 
 { #category : #accessing }
 CoProject >> serviceAccount: aCoServiceAccount [ 
-	serviceAccount := aCoServiceAccount
+	serviceAccount := aCoServiceAccount.
+	connection := CoConnection new
 ]
 
 { #category : #accessing }

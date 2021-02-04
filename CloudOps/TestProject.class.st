@@ -16,7 +16,7 @@ TestProject >> setUp [
 TestProject >> testProjectDefinesImage [
 	|imageDefinition imageName| 
 	imageName := 'New Image definition'.
-	imageDefinition := project defineImage:imageName .
+	imageDefinition := project createImageDefinition:imageName .
 	self assert: project imageDefinitions size equals: 1.
 	self assert: (project imageDefinitionNamed: imageName) equals: imageDefinition
 	
@@ -42,4 +42,17 @@ TestProject >> testProjectNeedsServiceAccountWithValidGoogleData [
 	project serviceAccount: (CoServiceAccount fromGoogle: '{"private_key":"1"}').
 	self assert: project isValid
 
+]
+
+{ #category : #tests }
+TestProject >> testProjectWithServiceAccountStartsDisconnected [
+	project serviceAccount: CoServiceAccount validOne.
+	self deny: project connection canConnect
+]
+
+{ #category : #tests }
+TestProject >> testProjectWithValidServiceAccountCanConnect [
+	project serviceAccount: CoServiceAccount validOne.
+	project connect.
+	self assert: project connection canConnect
 ]
