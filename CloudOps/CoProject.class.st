@@ -51,6 +51,11 @@ CoProject >> currentBuilds [
 	^builds
 ]
 
+{ #category : #creation }
+CoProject >> imageDefinitionNamed: aName [
+	^ (imageDefinitions select: [ :definition | definition name = aName ]) first
+]
+
 { #category : #accessing }
 CoProject >> imageDefinitions [
 	^imageDefinitions ifNil: [ imageDefinitions := OrderedCollection new ]
